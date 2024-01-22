@@ -1,0 +1,143 @@
+:root{
+    --Soft-red: hsl(10, 79%, 65%);
+    --Cyan: hsl(186, 34%, 60%);
+    --Dark-brown: hsl(25, 47%, 15%);
+    --Medium-brown: hsl(28, 10%, 53%);
+    --Cream: hsl(27, 66%, 92%);
+    --Very-pale-orange: hsl(33, 100%, 98%);
+}
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+}
+img{
+    width: 100%;
+}
+body{
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--Cream);
+}
+.balance{
+    background-color: var(--Soft-red);
+    justify-content: space-between;
+    align-items: center;
+    padding:20px;
+    border-radius: 15px;
+    color:white;
+}
+.balance .image{
+    width: 60px;
+}
+.balance p{
+    font-weight: 400;
+    margin-bottom:10px;
+    font-size: 14px;
+}
+.balance b{
+    font-size: 25px;
+    font-weight: 600;
+}
+.stats{
+    margin-top:20px;
+    padding:20px;
+    border-radius: 15px;
+    background-color: white;
+}
+.stats h1{
+    font-size: 25px;
+    color:var(--Dark-brown);
+}
+.chart{
+    gap:15px;
+    padding:40px 0 20px;
+    border-bottom: 1px solid #ccc;
+}
+.bar{
+    width:40px;
+    align-items: center;
+    justify-content: flex-end;
+    height:170px;
+}
+.bar span{
+    width: 100%;
+    height: 0;
+    border-radius: 5px;
+    position: relative;
+    background-color: var(--Soft-red);
+    transition: 1s ease;
+}
+.bar span:hover{
+    background-color: hsl(10deg 79% 65% / 80%);
+}
+.bar span.cyan:hover{
+    background-color: hsl(186deg 34% 60% / 80%);
+}
+
+.bar span:hover::before{
+    content:"$"attr(amount);
+    display: block;
+    padding:5px;
+    background-color: var(--Dark-brown);
+    position: absolute;
+    color:white;
+    border-radius: 5px;
+    left:-25%;
+    top:-40px;
+    animation: fade 0.3s ease;
+}
+@keyframes fade {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.bar span.cyan{
+    background-color: var(--Cyan);
+}
+.expenses{
+    padding:20px 0;
+}
+.expenses .row{
+    justify-content: space-between;
+}
+.expenses p{
+    color:var(--Medium-brown);
+}
+.expenses .row b{
+    font-size: 40px;
+    color:var(--Dark-brown);
+}
+.expenses .row p{
+    text-align: right;
+}
+.expenses .row p span{
+    color:var(--Dark-brown);
+    font-weight: 600;
+}
+.row{
+    display: flex;
+    flex-direction: row;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+}
+@media(max-width:480px){
+    .container{
+        width: 90%;
+    }
+    .chart{
+        gap:10px;
+    }
+    .expenses .row b{
+        font-size: 25px;
+    }
+}
